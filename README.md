@@ -16,7 +16,6 @@ FLASH GAME is a browser-based game collection developed as part of our universit
 
 - **GitHub** — Source code management and collaboration
 - **HTML, CSS, and JavaScript** — Website interface and browser-based functionality
-- **Render** — Planned cloud hosting platform
 - **Linux and Bash** — System administration scripts and demonstrations
 
 ## Project Status
