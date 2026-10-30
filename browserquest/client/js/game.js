@@ -726,7 +726,7 @@ function(InfoManager, BubbleManager, Renderer, Map, Animation, Sprite, AnimatedT
             
             //>>includeStart("prodHost", pragmas.prodHost);
             if(!connecting) {
-                this.client.connect(true); // always use the dispatcher in production
+                this.client.connect(false); // always use the dispatcher in production
             }
             //>>includeEnd("prodHost");
             

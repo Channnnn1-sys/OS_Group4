@@ -8,20 +8,28 @@ var cls = require('./lib/class')
 
 module.exports = Map = cls.Class.extend({    
     init: function(filepath) {
-    	var self = this;
-    
-    	this.isLoaded = false;
-    
-    	path.exists(filepath, function(exists) {
-            if(!exists) {
+        var self = this;
+
+        this.isLoaded = false;
+
+        fs.access(filepath, fs.constants.F_OK, function(err) {
+            if(err) {
                 log.error(filepath + " doesn't exist.");
                 return;
             }
-        
-            fs.readFile(filepath, function(err, file) {
-                var json = JSON.parse(file.toString());
-            
-                self.initMap(json);
+
+            fs.readFile(filepath, 'utf8', function(err, file) {
+                if(err) {
+                    log.error("Could not read " + filepath + ": " + err.message);
+                    return;
+                }
+
+                try {
+                    var json = JSON.parse(file);
+                    self.initMap(json);
+                } catch(e) {
+                    log.error("Could not parse " + filepath + ": " + e.message);
+                }
             });
         });
     },
