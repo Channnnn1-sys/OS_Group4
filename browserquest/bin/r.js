@@ -2442,7 +2442,7 @@ define('node/file', ['fs', 'path'], function (fs, path) {
 
     function mkDir(dir) {
         if (!exists(dir)) {
-            fs.mkdirSync(dir, 0777);
+            fs.mkdirSync(dir, 0o777);
         }
     }
 
